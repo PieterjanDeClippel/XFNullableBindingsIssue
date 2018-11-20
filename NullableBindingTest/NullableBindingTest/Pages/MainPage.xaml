@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NullableBindingTest.ViewModels"
+             x:Class="NullableBindingTest.Pages.MainPage">
+    <ContentPage.BindingContext>
+        <vm:MainVM x:Name="viewModel" x:FieldModifier="public" />
+    </ContentPage.BindingContext>
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <Label
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Text="Try changing the entries their value. The labels should update accordingly" />
+
+            <!-- normal double property -->
+            <Label
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                FontAttributes="Bold"
+                Text="Non-nullable double" />
+            <Entry
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Text="{Binding Value}" />
+            <Label
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Text="{Binding Value}" />
+        
+            <!-- nullable double property -->
+            <Label
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                FontAttributes="Bold"
+                Text="Nullable double" />
+            <Entry
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Text="{Binding NullableValue}" />
+            <Label
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Text="{Binding NullableValue}" />
+            <Entry
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                IsEnabled="False"
+                Text="{Binding NullableValue}" />
+
+            <!-- string property (string is a reference type) -->
+            <Label
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                FontAttributes="Bold"
+                Text="String" />
+            <Entry
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Text="{Binding Text}" />
+            <Label
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Text="{Binding Text}" />
+        
+        
+            <Button
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Text="Reset Text"
+                Command="{Binding ResetTextCommand}" />
+            <Button
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Text="Reset Numbers"
+                Command="{Binding ResetNumbersCommand}" />
+    </StackLayout>
+    </ScrollView>
+</ContentPage>
